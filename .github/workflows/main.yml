@@ -2,7 +2,7 @@ name: CAT7 – 3 group(s)
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # Staggered daily run
+    - cron: '0 5 * * *'  # Staggered daily run
   workflow_dispatch:
 
 jobs:
