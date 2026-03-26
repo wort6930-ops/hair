@@ -64,7 +64,10 @@ class BoutiqaatScraper:
                 
                 # Only apply infinite scroll for listing pages (/l/), not product detail pages (/p/)
                 if '/l/' in url:
-                    page.wait_for_selector('div.single-product-wrap', timeout=30000)
+                    try:
+                        page.wait_for_selector('div.single-product-wrap', timeout=30000)
+                    except Exception:
+                        logger.warning(f"No products found on page (selector timeout): {url}")
                     time.sleep(6)
                     logger.info("Starting infinite scroll...")
                     no_change_count = 0

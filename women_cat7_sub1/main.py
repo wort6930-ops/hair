@@ -100,8 +100,8 @@ class BoutiqaatDataPipeline:
         try:
             products = scraper.get_products(category_url)
             if not products:
-                logger.warning(f"No products found for {category_name}")
-                return False
+                logger.warning(f"No products found for {category_name}, skipping.")
+                return True
             logger.info(f"Found {len(products)} total products in category")
             subcategories_data = defaultdict(list)
             for product in products:
